@@ -24,7 +24,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['andela-abisoye', 'melquip', 'amxra', 'josenriagu', 'ladrillo'];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -53,3 +53,44 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+function githubCardMaker(user) {
+  const data = user.data
+  const [cardDiv, userImg, cardInfoDiv, h3, a] = ['div', 'img', 'div', 'h3', 'a']
+    .map(element => document.createElement(element))
+  const [usernameP, locationP, profileP, followersP, followingP, bioP] = ['p', 'p', 'p', 'p', 'p', 'p',]
+    .map(element => document.createElement(element))
+
+  // add classes and content
+  cardDiv.classList.add('card');
+  userImg.src = data.avatar_url
+  cardInfoDiv.classList.add('card-info');
+  h3.classList.add('name');
+  h3.textContent = data.name;
+  usernameP.classList.add('username');
+  usernameP.textContent = data.login;
+  locationP.textContent = `Location: ${data.location}`;
+  profileP.textContent = 'Profile: ';
+  a.href = data.html_url;
+  a.textContent = data.html_url;
+  followersP.textContent = `followers: ${data.followers}`;
+  followingP.textContent = `following: ${data.following}`;
+  bioP.textContent = `Bio: ${data.bio}`;
+
+  // create structure
+  profileP.appendChild(a);
+
+  cardInfoDiv.appendChild(h3);
+  cardInfoDiv.appendChild(usernameP);
+  cardInfoDiv.appendChild(locationP);
+  cardInfoDiv.appendChild(profileP);
+  cardInfoDiv.appendChild(followersP);
+  cardInfoDiv.appendChild(followingP);
+  cardInfoDiv.appendChild(bioP);
+
+  cardDiv.appendChild(userImg);
+  cardDiv.appendChild(cardInfoDiv);
+
+  return cardDiv
+
+}
