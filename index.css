@@ -93,6 +93,9 @@ body {
 
 .card {
   width: 100%;
+  height: 185px;
+  position: relative;
+  overflow: hidden;
   padding: 20px;
   display: flex;
   border-radius: 5px;
@@ -121,6 +124,16 @@ body {
   font-size: 1.8rem;
   font-style: italic;
   margin: 3px 0 10px;
+}
+
+.card.expand {
+  height: 250px;
+}
+
+button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 

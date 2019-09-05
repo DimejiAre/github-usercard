@@ -56,9 +56,9 @@ const followersArray = ['andela-abisoye', 'melquip', 'amxra', 'josenriagu', 'lad
 
 function githubCardMaker(user) {
   const data = user.data
-  const [cardDiv, userImg, cardInfoDiv, h3, a] = ['div', 'img', 'div', 'h3', 'a']
+  const [cardDiv, userImg, cardInfoDiv, h3, a, button] = ['div', 'img', 'div', 'h3', 'a', 'button']
     .map(element => document.createElement(element))
-  const [usernameP, locationP, profileP, followersP, followingP, bioP] = ['p', 'p', 'p', 'p', 'p', 'p',]
+  const [usernameP, locationP, profileP, followersP, followingP, bioP, emailP, createdP, hireP] = ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p']
     .map(element => document.createElement(element))
 
   // add classes and content
@@ -76,6 +76,11 @@ function githubCardMaker(user) {
   followersP.textContent = `followers: ${data.followers}`;
   followingP.textContent = `following: ${data.following}`;
   bioP.textContent = `Bio: ${data.bio}`;
+  emailP.textContent = `email: ${data.email}`;
+  createdP.textContent = `CreatedAt: ${data.created_at}`;
+  hireP.textContent = `Hireable: ${data.hireable}`;
+  button.textContent = 'click';
+
 
   // create structure
   profileP.appendChild(a);
@@ -87,10 +92,20 @@ function githubCardMaker(user) {
   cardInfoDiv.appendChild(followersP);
   cardInfoDiv.appendChild(followingP);
   cardInfoDiv.appendChild(bioP);
+  cardInfoDiv.appendChild(emailP);
+  cardInfoDiv.appendChild(createdP);
+  cardInfoDiv.appendChild(hireP);
+  cardInfoDiv.appendChild(button);
+
 
   cardDiv.appendChild(userImg);
   cardDiv.appendChild(cardInfoDiv);
 
+  button.addEventListener('click', ()=>{
+    cardDiv.classList.toggle('expand');
+  })
+
+  console.log(cardDiv)
   return cardDiv
 
 }
