@@ -115,6 +115,23 @@ function addCard(user) {
 
 addCard('DimejiAre')
 
+// Add Followers Manual
 followersArray.forEach(user => {
   addCard(user)
 })
+
+// Add Followers Automated
+axios({
+  method: 'get',
+  url: `https://api.github.com/users/DimejiAre/followers`
+})
+  .then(response => {
+    console.log(response)
+    let followers = response.data
+    followers.forEach(follower => {
+      addCard(follower.login)
+    })
+  })
+  .catch(err => {
+    return err
+  })
