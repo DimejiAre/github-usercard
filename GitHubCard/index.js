@@ -114,10 +114,6 @@ function addCard(user) {
   axios({
     method: 'get',
     url: `https://api.github.com/users/${user}`
-    // auth: {
-    //   username: process.env.DB_USER,
-    //   password: process.env.DB_PASS
-    // }
   })
     .then(user => {
       let githubCard = githubCardMaker(user);
